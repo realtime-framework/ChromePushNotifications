@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <title>Realtime Chrome Push Notifications example</title>
+  <meta name="description" content="This page demonstrates the use of the Realtime Chrome Push Notitications using GCM">
+  <meta name="author" content="Realtime">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+
+  
+  <link rel="icon" type="image/png" href="img/realtime-logo.jpg">
+
+  <!-- THESE ARE THE REQUIRED FILES TO USE CHROME PUSH NOTIFICATIONS -->
+  <link rel="manifest" href="manifest.json">
+  <script src="ChromePushManager.js"></script>  
+  <script src="//dfdbz2tdq3k01.cloudfront.net/js/2.1.0/ortc.js"></script>
+  
+  <!-- THESE FILES ARE ONLY REQUIRED FOR THE CURRENT EXAMPLE -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>  
+  <script src="index.js"></script>
+
+</head>
+<body>
+
+  <div class="container">
+    <div class="row">
+      <div class="one-half column" style="margin-top: 2%">
+
+        <p>
+          <img src="img/realtime-large-logo.jpg" style="max-width: 90%">
+        </p>        
+        
+        <h1>Introducing Chrome Push Notifications</h1>
+
+        <p>
+          Starting with Chrome 42 you are able to send push notifications to your website users, even when they are not browsing your website.
+        </p>
+        <p>
+          We have integrated this new feature into the Realtime Cloud Messaging Pub/Sub service to make your life easier.
+        </p>
+
+        <h2>How?</h2>
+
+        <p>
+            You probably noticed that Chrome asked if you allowed notifications from this website. If you accepted you are already subscribed to your own private channel to receive notifications.            
+        </p>
+
+        <p>
+          Your channel is: <code><span id="channel">...</span></code>
+        </p>
+
+        <p>
+            This was performed through the new <code>subscribeWithNotifications</code> method in the Realtime JavaScript SDK.
+        </p>
+        <p>
+            Demo time! Clicking on the following button will send a new push notification to your private channel (only you'll see the push).
+        </p>
+
+        <p>
+          <button id="sendButton" class="button-primary" onclick="javascript:send();">Send me a push notification</button>
+        </p>
+
+        <p>
+          You should see a Chrome Push Notification pop-up like this near your system tray (the first push may take a little more time to be delivered due to the underlying Google Cloud Messaging backend configuration).          
+        </p>
+        </p>
+
+        <p>
+          <img src="img/push-notification.png" style="max-width: 90%; border: solid lightgray 1px;">
+        </p>
+
+        <p>
+            This example uses a private channel for each user so you can send pushes at will, without annoying other users. A typical use case in a website would be using a global channel and subscribing each user to that channel. This way you could broadcast a single push to all users simultaneously. It´s powerful but should be used wisely.
+        </p>        
+
+      </div>
+      <div class="one-half column" style="margin-top: 10%">
+        <img style="max-width: 90%; " src="img/push2.gif">
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="twelve column" style="margin-top: 2%">        
+
+        <h2>Cool! What if the user is not browsing the website when the push notification is sent?</h2>
+
+        <p>
+          No problem, if an instance of Chrome is running users will see your notification pop-up inviting them back to your website. If Chrome is not running the pop-up will be shown as soon as Chrome is launched.
+        </p>
+
+        <p>
+          Let's try it. Copy the following curl command and <a href="http://framework.realtime.co/messaging">navigate away</a> from this website. Paste the command in your terminal window and send yourself a push notification. When you receive it click on the pop-up to comeback to this page.
+        </p>
+
+        <p>          
+            <div id="curl" style="padding: 15px; background-color: black; color: white;">
+            </div>          
+        </p>
+
+        <p>
+          The command above is simply sending a Realtime message to your private channel (the C parameter) using the Realtime REST API. The Realtime server will take care of broadcasting it to Google Cloud Messaging.
+        </p>
+
+        <h2>Will this work in Chrome for Android?</h2>
+        
+        <p>
+          Yes it will, with no code changes.
+        </p>
+
+        <p>
+          If you have an Android device with Chrome 42+ installed just navigate to this page and copy your private channel. Then replace the channel name in the curl above (the C parameter) and give it a go.
+        </p>
+
+        <h2 style="padding-top: 10px;">One push, all platforms</h2>
+        <p>
+            But the good news won't stop here. Taking advantage of the Realtime Cloud Messaging integration with GCM for Android devices and APNS for iOS/OSX devices, now you'll be able to send one single push to your entire user base in almost all platforms. Until now you could only do it with native mobile apps, now you can do it also for your website users.
+        </p>
+
+        <p>
+          We are currently working hard to add support for Safari OSX website push notifications also.
+        </p>
+
+        <h2 style="padding-top: 10px;">This is great! How can I get started?</h2>
+        <p>
+          You'll find this example source code and starting guide at <a href="http://github.com">http://github.com</a>
+        </p>
+
+        <p style="margin-bottom: 50px;">
+            Follow the guidelines and in less than one hour you'll be engaging with your website users. Go for it ...
+        </p>        
+
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
+
+
