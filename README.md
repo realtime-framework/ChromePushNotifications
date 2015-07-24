@@ -10,8 +10,7 @@ This project shows how to use the new Chrome Push Notifications in a website, al
 		{
 		  "name": "Realtime Chrome Push Demo",
 		  "short_name": "Push Demo",
-		  "gcm_sender_id": "<YOUR_GOOGLE_PROJECT_NUMBER>",
-		  "gcm_user_visible_only": true
+		  "gcm_sender_id": "<YOUR_GOOGLE_PROJECT_NUMBER>"		  
 		}
  
 - Edit the `service-worker.js` file to change the notification title, body and redirect URL. When a push notification is received this service worker will be executed and the event `push` will be emitted;
