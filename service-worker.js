@@ -2,8 +2,7 @@
 // push notifications and user clicks
 
 // A push has arrived ...
-self.addEventListener('push', function(event) {  
-
+self.addEventListener('push', function(event) {
   // Since there is no payload data with the first version  
   // of push messages, we'll use some static content. 
   // However you could grab some data from  
