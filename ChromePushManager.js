@@ -23,9 +23,10 @@ ChromePushManager.initialiseState = function (callback) {
 
 ChromePushManager.subscribeBrowserId = function(callback) {  
   navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {  
-    serviceWorkerRegistration.pushManager.subscribe()  
+    serviceWorkerRegistration.pushManager.subscribe({userVisibleOnly: true})  
       .then(function(subscription) {  
-        callback(null, subscription.subscriptionId);
+        var register = ChromePushManager.getRegistrationId(subscription);
+        callback(null, register);
       })  
       .catch(function(e) {  
         if (Notification.permission === 'denied') {  
@@ -34,5 +35,21 @@ ChromePushManager.subscribeBrowserId = function(callback) {
           callback('Unable to subscribe to push.', null);  
         }  
       });  
-  });  
+  }); 
 }
+
+ChromePushManager.getRegistrationId = function(pushSubscription) {
+  if (pushSubscription.subscriptionId) {
+    return pushSubscription.subscriptionId;
+  }
+
+  var endpoint = 'https://android.googleapis.com/gcm/send/';
+  parts = pushSubscription.endpoint.split(endpoint);
+
+  if(parts.length > 1)
+  {
+    return parts[1];
+  }
+
+} 
+
