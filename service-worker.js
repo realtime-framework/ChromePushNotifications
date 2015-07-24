@@ -37,8 +37,8 @@ self.addEventListener('notificationclick', function(event) {
       if (client.url == '/' && 'focus' in client)
         return client.focus();
     }
-    if (clients.openWindow)
-      var url = '/chrome-push';
+    if (clients.openWindow)      
+      var url = '/chrome-push/index.html';    
       return clients.openWindow(url);
   }));
 });
