@@ -3,6 +3,8 @@ This project shows how to use the new Chrome Push Notifications in a website, al
 
 ## Realtime + Chrome Push Notifications guide
 
+- Register to get your free Realtime Messaging application key at [https://accounts.realtime.co/signup/](https://accounts.realtime.co/signup/)
+
 - Create a Google Project using GCM. [Follow the tutorial](http://messaging-public.realtime.co/documentation/starting-guide/mobilePushGCM.html).
 
 - Update the Web App Manifest file (`manifest.json`) and enter your Google Project Number obtained from the previous step:
