@@ -22,7 +22,7 @@ This project shows how to use the new Chrome Push Notifications in a website, al
     	var chromePushManager = new ChromePushManager('./service-worker.js', function(error, registrationId){
     	... });
      
-- Connect a Realtime client and call the s`ubscribeWithNotifications` method to subscribe the desired channel for push notifications using the GCM `registrationId`:
+- Connect a Realtime client and call the `subscribeWithNotifications` method to subscribe the desired channel for push notifications using the GCM `registrationId`:
 
 		client.subscribeWithNotifications(channel, true, registrationId,
                          function (theClient, channel, msg) { ... } );
