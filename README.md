@@ -35,9 +35,20 @@ A mixed private/global channel strategy can also be used, it really depends on y
 
 ## Limitations
 1. This will only work on Chrome 42+
-2. Your website must use the https protocol
+2. Your website must use the https protocol (it will work on localhost with http)
 3. In Chrome Desktop at least one Chrome tab must be opened in order to receive push notifications (Chrome must be running)
 2. At the moment the Chrome push event doesn't allow you to obtain the push payload. If you want to customize your push title and body you'll need to call an external REST API from your service worker. The [Realtime Cloud Storage](http://framework.realtime.co/storage) and [Realtime Code Hosting](http://storage-public.realtime.co/documentation/code-hosting-guide/1.0/overview.html) services might be useful here. 
+
+## Troubleshooting
+
+### Unable to subscribe to push
+
+* Check that you have entered your Firebase Sender ID (or GCM Project Number) in the `gcm_sender_id` of your manifest.json file;
+
+*  Make sure your webserver is properly configured to serve the file manifest.json (check if there are no errors in Chrome Developers Tool network tab). IIS users may need to add the MIME type; 
+
+* If you're not using localhost make sure you are using the https protocol with a valid SSL certificate for the domain you are using;  
+
 
 ## On-line example
 You can test the Realtime Chrome Push Notifications at [this on-line example](https://storage-cdn.realtime.co/chrome-push/index.html).
